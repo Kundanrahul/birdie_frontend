@@ -77,7 +77,7 @@ const Tweetbox = () => {
     }
   
     if (tweetCount >= tweetLimit) {
-      toast.error(`Exceeded limit. Subscribe to a higher plan to tweet more.`);
+      toast.error(`Exceeded limit Subscribe to a higher plan to tweet more`);
       return;
     }
   
