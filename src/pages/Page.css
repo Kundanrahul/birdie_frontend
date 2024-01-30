@@ -1,0 +1,44 @@
+.page {
+    flex: 0.4;
+    border-right: 1px solid var(--twitter-background);
+    width: 100vw;
+    padding: 0 180px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePage {
+    flex: 0.4;
+    border-right: 1px solid var(--twitter-background);
+    min-width: fit-content;
+    overflow-y: scroll;
+}
+
+.profilePage::-webkit-scrollbar {
+    display: none;
+}
+
+
+.pageTitle {
+    color: var(--twitter-color);
+    text-align: center;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-right: 12px;
+}
+
+.ib {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #369dd9; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  .ib:hover {
+    background-color: #5bc5e9; /* Darker green on hover */
+  }

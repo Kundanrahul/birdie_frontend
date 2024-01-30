@@ -1,0 +1,142 @@
+.subscribe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.premium-verification {
+  background-color:#d0c9c994;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+  text-align: center;
+}
+
+.premium-verification ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.premium-verification li {
+  margin-bottom: 10px;
+  font-family: monospace;
+  font-size: 17px;
+}
+
+.pay-now-button {
+  background-color: #147cebd8;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.pay-now-button:hover {
+  background-color: #0056b3;
+}
+
+.subscription-plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.plan {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.plan h3 {
+  margin-bottom: 10px;
+}
+
+.plan p {
+  margin-bottom: 15px;
+}
+
+.subscribe-button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.subscribe-button:hover {
+  background-color: #45a049;
+}
+
+.row-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.row-container .payment-form {
+  width: 30%;
+}
+
+@media screen and (max-width: 1164px) {
+  .premium-verification {
+    width: 90%;
+  }
+
+  .subscription-plans .plan {
+    width: 80%;
+  }
+
+  .row-container .payment-form {
+    width: 100%;
+  }
+}
+.card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom right, #87CEFA, #ADD8E6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.success-message {
+  font-size: 17px;
+  color: #1d1717;
+  font-family: 'Arial', sans-serif;
+}
+
+.green-tick {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%, 0 50%);
+  animation: moveGradient 2s infinite;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
