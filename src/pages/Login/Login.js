@@ -57,11 +57,15 @@ const Login = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle().catch((error) => {
-      handleSignInError(error.code);
-    });
-  };
+   const handleGoogleSignIn = async (e) => {
+        e.preventDefault();
+        try {
+            await googleSignIn();
+            navigate("/");
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
   if (user || googleUser) {
     navigate('/');
