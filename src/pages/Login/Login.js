@@ -34,7 +34,13 @@ const Login = () => {
     return AES.encrypt(message, secretKey, { iv }).toString();
   };
 
-  const handleSubmit = (e) => {
+  const handleSignInError = (errorCode) => {
+    if (errorCode !== 'auth/popup-closed-by-user') {
+      setLoginAttempts(loginAttempts + 1);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (blockedUntil && blockedUntil > new Date().getTime()) {
@@ -42,41 +48,24 @@ const Login = () => {
         (blockedUntil - new Date().getTime()) / (60 * 1000)
       )} minutes.`);
     } else {
-      if (loginAttempts >= 3) {
-        const currentTime = new Date().getTime();
-        const blockUntilTime = currentTime + 2 * 60 * 1000; // Locked for 2 minutes
-        setBlockedUntil(blockUntilTime);
-        Cookies.set('blockedUntil', blockUntilTime, { expires: new Date(blockUntilTime) });
+      try {
+        await signInWithEmailAndPassword(email, password);
         setLoginAttempts(0);
-
-        const encryptedMessage = encryptMessage(
-          `Account is blocked for 2 minutes. Try again after some time.`
-        );
-
-        console.log(`Account is currently locked. ${encryptedMessage}`);
-      } else {
-        signInWithEmailAndPassword(email, password);
-        setLoginAttempts(loginAttempts + 1);
+      } catch (error) {
+        handleSignInError(error.code);
       }
     }
   };
 
   const handleGoogleSignIn = () => {
-    if (blockedUntil && blockedUntil > new Date().getTime()) {
-      console.log(`Account is currently locked. Try again in ${Math.ceil(
-        (blockedUntil - new Date().getTime()) / (60 * 1000)
-      )} minutes.`);
-    } else {
-      signInWithGoogle();
-      setLoginAttempts(loginAttempts + 1);
-    }
+    signInWithGoogle().catch((error) => {
+      handleSignInError(error.code);
+    });
   };
 
   if (user || googleUser) {
     navigate('/');
   }
-  if (error) console.log(error.message);
-  if (loading) console.log('loading...');
 
   return (
     <>
@@ -149,6 +138,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 
