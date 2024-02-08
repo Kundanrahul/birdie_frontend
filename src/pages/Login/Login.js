@@ -61,16 +61,15 @@ const Login = () => {
     }
   };
 
-  const handleGoogleSignIn = () => {
-    if (blockedUntil && blockedUntil > new Date().getTime()) {
-      console.log(`Account is currently locked. Try again in ${Math.ceil(
-        (blockedUntil - new Date().getTime()) / (60 * 1000)
-      )} minutes.`);
-    } else {
-      signInWithGoogle();
-      setLoginAttempts(loginAttempts + 1);
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+        await  signInWithGoogle();;
+        navigate("/");
+    } catch (error) {
+        console.log(error.message);
     }
-  };
+};
 
   if (user || googleUser) {
     navigate('/');
@@ -149,6 +148,4 @@ const Login = () => {
 };
 
 export default Login;
-
-
 
